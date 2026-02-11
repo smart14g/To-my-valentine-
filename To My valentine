@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💖</title>
+
+<style>
+/* Background Animation */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #ff4e75, #ff9a9e, #fad0c4, #ffdde1);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    color: rgba(255, 0, 80, 0.7);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* Main Box */
+.container {
+    text-align: center;
+    color: white;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e75;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+button:hover {
+    background: #ff4e75;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Love Letter Popup */
+.love-letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    color: #ff4e75;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    transition: 0.5s;
+    max-width: 400px;
+}
+
+.love-letter.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.love-letter h2 {
+    margin-top: 0;
+}
+
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff4e75;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>For My Beautiful Valentine 💕</h1>
+    <button onclick="openLetter()">Click to Open My Heart 💌</button>
+</div>
+
+<div class="love-letter" id="letter">
+    <h2>My Love ❤️</h2>
+    <p>
+        From the moment you came into my life,  
+        everything became brighter.  
+        You are my happiness, my peace,  
+        and my forever Valentine. 💖  
+    </p>
+    <p><strong>I Love You Always 💞</strong></p>
+    <button class="close-btn" onclick="closeLetter()">Close</button>
+</div>
+
+<script>
+function openLetter() {
+    document.getElementById("letter").classList.add("show");
+}
+
+function closeLetter() {
+    document.getElementById("letter").classList.remove("show");
+}
+
+/* Generate Floating Hearts */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 300);
+</script>
+
+</body>
+</html>
